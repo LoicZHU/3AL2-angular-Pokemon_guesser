@@ -1,1 +1,43 @@
-<p>admin-pokemon works!</p>
+<div class="col-md-12 overflow-hidden">
+  <div class="row">
+    <h1 class="mb-3 col-md-10">Pokemons</h1>
+    <button (click)="onAddBtnClick()" class="btn btn-primary col-md-2 btn-sm">Ajouter</button>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12" style="overflow-y: auto; height: 85vh">
+      <table class="table-hover table table-striped">
+        <th scope="col">image</th>
+        <th scope="col">nom</th>
+        <th scope="col">types</th>
+        <th scope="col">type 1</th>
+        <th scope="col">type 2</th>
+        <th scope="col">weight</th>
+        <th scope="col">height</th>
+        <th scope="col">HP</th>
+        <th scope="col">attack</th>
+        <th scope="col">defense</th>
+        <th scope="col">speed</th>
+        <th scope="col">legendary</th>
+
+        <tbody>
+          <tr *ngFor="let item of pokemonsList">
+            <td><img height="60" width="60" src="{{ item | pokemoneImage }}" alt="" /></td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.types }}</td>
+            <td>{{ item.type1 }}</td>
+            <td>{{ item.type2 }}</td>
+            <td>{{ item.weight }}</td>
+            <td>{{ item.height }}</td>
+            <td>{{ item.hp }}</td>
+            <td>{{ item.attack }}</td>
+            <td>{{ item.defense }}</td>
+            <td>{{ item.speed }}</td>
+            <td>{{ item.legendary | boolTransform }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button class="btn btn-primary form-control">Ajouter</button>
+  </div>
+</div>

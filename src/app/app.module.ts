@@ -7,10 +7,11 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CoreService } from './core/services/core/core.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { PokemoneImagePipe } from './shared/pipes/pokemone-image.pipe';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
-  imports: [BrowserModule, AppRoutingModule, NgbModule],
+  imports: [BrowserModule, AppRoutingModule, NgbModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

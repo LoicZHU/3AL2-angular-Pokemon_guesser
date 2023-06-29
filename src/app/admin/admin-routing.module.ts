@@ -1,3 +1,4 @@
+import { AdminAddPokemonComponent } from './admin-pokemons/admin-add-pokemon/admin-add-pokemon.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 

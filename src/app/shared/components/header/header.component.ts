@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
   routes: ReadonlyArray<{ path: string; label: string }> = [
-    { path: '/admin', label: 'Administration' },
+    { path: '/admin/admin', label: 'Administration' },
     { path: '/pokemons', label: 'Pokémons' },
     { path: '/', label: 'Jeu' },
   ];
