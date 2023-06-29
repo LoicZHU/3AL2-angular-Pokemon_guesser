@@ -11,17 +11,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.core.saveData();
-    console.log(this.core.getAll());
-
-    const eleme = this.core.getOneByField(1);
-
-    this.core.create(eleme);
-
-    console.log(this.core.getAll());
-
-    this.core.delete(24);
-
-    console.log(this.core.getAll());
   }
   title = 'pokemon-guesser';
 }
