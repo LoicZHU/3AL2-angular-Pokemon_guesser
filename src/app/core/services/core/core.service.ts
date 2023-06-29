@@ -14,11 +14,8 @@ export abstract class CoreService {
     this._apiUrl = '../../../../assets/data/data.json';
   }
 
-  saveData(): void {
-    this.httpClient.get(this.getPath(this._apiUrl)).subscribe((response) => {
-      const jsonData = JSON.stringify(response);
-      localStorage.setItem('jsonData', jsonData);
-    });
+  saveData(): Observable<any> {
+    return this.httpClient.get(this.getPath(this._apiUrl));
   }
 
   create(payload: any): void {
@@ -45,7 +42,7 @@ export abstract class CoreService {
     return jsonData;
   }
 
-  getOneByField<T>(id: string | number): Observable<any> {
+  getOneByField<T>(id: string | number): any {
     const data = this.getAll();
 
     return data.find((element: any) => element.number == id);
