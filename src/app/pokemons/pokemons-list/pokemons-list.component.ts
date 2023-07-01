@@ -16,11 +16,10 @@ export class PokemonsListComponent implements OnInit {
     this.getPokemons();
   }
 
-  getPokemons(): void {
-    this.pokemons = this.core.getAll();
-  }
-
   trackByNumber(index: number, pokemon: Pokemon): number {
     return pokemon.number;
+  }
+  private getPokemons(): void {
+    this.pokemons = this.core.getAll<Pokemon[]>();
   }
 }

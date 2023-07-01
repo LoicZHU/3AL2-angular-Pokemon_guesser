@@ -16,7 +16,7 @@ export class PokemoneImagePipe implements PipeTransform {
     } else {
       imageUrl = url + pokemon.number + pokemon.name + '.webp';
     }
-    console.log(imageUrl);
+
     return imageUrl;
   }
 }

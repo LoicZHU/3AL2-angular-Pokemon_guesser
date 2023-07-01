@@ -30,14 +30,18 @@ export class PokemonDetailsComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.numberParam = Number(this.route.snapshot.paramMap.get('number'));
-    this.pokemonsCount = this.core.getAll().length;
+    this.pokemonsCount = this.core.getAll<Pokemon[]>().length;
 
     await this.verifyNumberParam(this._numberParam, this._pokemonsCount);
-    this.getPokemonByNumber(this._numberParam);
+    await this.getPokemonByNumber(this._numberParam);
   }
 
-  private getPokemonByNumber(number: number) {
-    this.pokemon = this.core.getOneByField(number);
+  private async getPokemonByNumber(number: number): Promise<void> {
+    this.pokemon = this.core.getOneByField<Pokemon>(number);
+
+    if (!this.pokemon) {
+      await this.router.navigateByUrl('/');
+    }
   }
 
   private async verifyNumberParam(number: number, count: number): Promise<void> {

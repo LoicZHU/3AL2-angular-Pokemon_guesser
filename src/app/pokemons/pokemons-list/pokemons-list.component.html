@@ -1,5 +1,7 @@
 <h1>Liste de Pokémons</h1>
 
-<div class="row justify-content-center" *ngFor="let pokemon of pokemons; trackBy: trackByNumber">
-  <app-pokemon-card [pokemon]="pokemon"></app-pokemon-card>
+<div class="row">
+  <div class="col col-md-6 col-lg-4 col-xl-3 col-xxl-2" *ngFor="let pokemon of pokemons; trackBy: trackByNumber">
+    <app-pokemon-card class="d-flex justify-content-center p-3" [pokemon]="pokemon"></app-pokemon-card>
+  </div>
 </div>

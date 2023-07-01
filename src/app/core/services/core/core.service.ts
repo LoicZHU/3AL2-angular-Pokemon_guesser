@@ -35,17 +35,21 @@ export abstract class CoreService {
     localStorage.setItem('jsonData', JSON.stringify(json));
   }
 
-  getAll<T>(): any[] {
+  getAll<T>(): T {
     const data = String(localStorage.getItem('jsonData'));
     const jsonData = JSON.parse(data);
 
-    return jsonData;
+    return jsonData ?? [];
   }
 
-  getOneByField<T>(id: string | number): any {
-    const data = this.getAll();
+  getOneByField<T extends { number: number }>(id: string | number): undefined | T {
+    const data = this.getAll<T[]>();
 
-    return data.find((element: any) => element.number == id);
+    if (!('number' in data[0])) {
+      return undefined;
+    }
+
+    return data.find((element) => element.number == id);
   }
   updateByField(id: number | string, payload: any): void {
     const stroData = localStorage.getItem('jsonData');

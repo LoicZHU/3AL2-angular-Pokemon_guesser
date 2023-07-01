@@ -7,11 +7,11 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CoreService } from './core/services/core/core.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { PokemoneImagePipe } from './shared/pipes/pokemone-image.pipe';
+import { SharedModulesModule } from './shared/shared-modules/shared-modules.module';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
-  imports: [BrowserModule, AppRoutingModule, NgbModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, NgbModule, HttpClientModule, SharedModulesModule],
   providers: [],
   bootstrap: [AppComponent],
 })
