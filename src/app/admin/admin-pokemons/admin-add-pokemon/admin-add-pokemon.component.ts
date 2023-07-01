@@ -1,31 +1,40 @@
-import { Component } from '@angular/core';
-import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription, tap } from 'rxjs';
+import { Pokemon } from 'src/app/core/interface/pokemon.interface';
+import { CoreService } from 'src/app/core/services/core/core.service';
 
 @Component({
   selector: 'app-admin-add-pokemon',
   templateUrl: './admin-add-pokemon.component.html',
   styleUrls: ['./admin-add-pokemon.component.scss'],
 })
-export class AdminAddPokemonComponent {
+export class AdminAddPokemonComponent implements OnInit, OnDestroy {
+  enableTypesDmg: boolean = false;
+  routerSubscription: Subscription = new Subscription();
+  isUpdate: boolean = false;
+  pokemonId!: number;
+
   pokemonsForm: FormGroup = new FormGroup({
     number: new FormControl(null),
     name: new FormControl(null, Validators.required),
     types: new FormControl(null),
     type1: new FormControl(null),
     type2: new FormControl(null, Validators.required),
-    height: new FormControl(null),
-    weight: new FormControl(null),
+    height: new FormControl(null, Validators.required),
+    weight: new FormControl(null, Validators.required),
     malePct: new FormControl(null),
     femalePct: new FormControl(null),
     captRate: new FormControl(null),
     expPoints: new FormControl(null),
     expSpeed: new FormControl(null),
     baseTotal: new FormControl(null),
-    hp: new FormControl(null),
-    attack: new FormControl(null),
-    defense: new FormControl(null),
-    special: new FormControl(null),
-    speed: new FormControl(null),
+    hp: new FormControl(null, Validators.required),
+    attack: new FormControl(null, Validators.required),
+    defense: new FormControl(null, Validators.required),
+    special: new FormControl(null, Validators.required),
+    speed: new FormControl(null, Validators.required),
     normalDmg: new FormControl(null),
     fireDmg: new FormControl(null),
     waterDmg: new FormControl(null),
@@ -42,24 +51,38 @@ export class AdminAddPokemonComponent {
     ghostDmg: new FormControl(null),
     dragonDmg: new FormControl(null),
     evolutions: new FormControl(null),
-    legendary: new FormControl(null),
-    dynamicTypes: new FormArray([]),
+    legendary: new FormControl(null, Validators.required),
   });
 
-  get dynamicTypes(): FormArray {
-    return this.pokemonsForm.get('dynamicTypes') as FormArray;
+  constructor(private core: CoreService, private router: Router, private route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    this.route.params.subscribe((res) => {
+      this.isUpdate = true;
+      this.pokemonId = res['id?'];
+      if (this.pokemonId) {
+        const pokemon: Pokemon | undefined = this.core.getOneByField(this.pokemonId);
+        this.pokemonsForm.setValue(pokemon as Pokemon);
+      }
+    });
   }
 
-  selectTypes(): void {
-    if (this.pokemonsForm.value.type1 != null) {
-      const type = this.pokemonsForm.value.type1;
-      this.dynamicTypes.push(new FormControl(type + 'Dmg'));
-    }
+  ngOnDestroy(): void {
+    this.routerSubscription.unsubscribe();
   }
 
-  constructor() {}
+  onAddBtnClick(): void {
+    const data: Pokemon = this.pokemonsForm.value;
+    this.core.create(data);
 
-  onAddBtnClick() {
-    console.log(this.pokemonsForm.value);
+    alert('pokemon ajouter');
+    this.router.navigateByUrl('/admin/admin').catch((e) => console.log(e));
+  }
+
+  onUpdateBtnClick(): void {
+    const data: Pokemon = this.pokemonsForm.value;
+    this.core.updateByField(this.pokemonId, data);
+
+    //this.router.navigateByUrl('/admin/admin').catch((e) => console.log(e));
   }
 }

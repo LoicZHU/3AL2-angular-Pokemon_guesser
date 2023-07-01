@@ -5,7 +5,7 @@
         <input class="form-control" type="text" formControlName="name" placeholder="Name" />
         <input class="form-control" type="number" formControlName="types" placeholder="Types" />
 
-        <select (change)="selectTypes()" formControlName="type1" class="form-control">
+        <select formControlName="type1" class="form-control">
           <option selected disabled value="">Type 1</option>
           <option value="electric">electric</option>
           <option value="poison">Poison</option>
@@ -18,7 +18,7 @@
           <option value="normal">normal</option>
         </select>
 
-        <select (change)="selectTypes()" formControlName="type2" class="form-control">
+        <select formControlName="type2" class="form-control">
           <option selected disabled value="">Type 2</option>
           <option value="electric">electric</option>
           <option value="poison">Poison</option>
@@ -38,6 +38,13 @@
         <input class="form-control" type="text" formControlName="femalePct" placeholder="femalePct" />
         <input class="form-control" type="text" formControlName="captRate" placeholder="captRate" />
         <input class="form-control" type="text" formControlName="expPoints" placeholder="expPoints" />
+        <input class="form-control" type="text" formControlName="normalDmg" placeholder="normalDmg" />
+        <input class="form-control" type="text" formControlName="fireDmg" placeholder="fireDmg" />
+        <input class="form-control" type="text" formControlName="waterDmg" placeholder="waterDmg" />
+        <input class="form-control" type="text" formControlName="electricDmg" placeholder="electricDmg" />
+        <input class="form-control" type="text" formControlName="grassDmg" placeholder="grassDmg" />
+        <input class="form-control" type="text" formControlName="iceDmg" placeholder="iceDmg" />
+        <input class="form-control" type="text" formControlName="fightDmg" placeholder="fightDmg" />
       </div>
 
       <div class="col-md-6">
@@ -53,11 +60,29 @@
           <option value="Oui">Oui</option>
           <option value="Non">Non</option>
         </select>
+        <input class="form-control" type="text" formControlName="poisonDmg" placeholder="poisonDmg" />
+        <input class="form-control" type="text" formControlName="groundDmg" placeholder="groundDmg" />
+        <input class="form-control" type="text" formControlName="flyingDmg" placeholder="flyingDmg" />
+        <input class="form-control" type="text" formControlName="psychicDmg" placeholder="psychicDmg" />
+        <input class="form-control" type="text" formControlName="rockDmg" placeholder="rockDmg" />
+        <input class="form-control" type="text" formControlName="ghostDmg" placeholder="ghostDmg" />
+        <input class="form-control" type="text" formControlName="dragonDmg" placeholder="dragonDmg" />
       </div>
     </div>
   </form>
 
-  <button [disabled]="pokemonsForm.invalid" (click)="onAddBtnClick()" class="btn btn-success form-control">
+  <button
+    [hidden]="isUpdate"
+    [disabled]="pokemonsForm.invalid"
+    (click)="onAddBtnClick()"
+    class="btn btn-success form-control"
+  >
     Ajouter
   </button>
+
+  <div *ngIf="isUpdate">
+    <button [disabled]="pokemonsForm.invalid" (click)="onUpdateBtnClick()" class="btn btn-success form-control">
+      Modifier
+    </button>
+  </div>
 </div>

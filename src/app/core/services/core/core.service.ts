@@ -28,11 +28,12 @@ export abstract class CoreService {
   delete(id: number): void {
     const stroData = localStorage.getItem('jsonData');
     const json = JSON.parse(String(stroData));
+    console.log(json);
 
-    const index = json.findIndex((element: any) => element.number == id);
-    json.splice(index, 1);
+    const newArray = [...json.slice(0, id), ...json.slice(id + 1)];
+    console.log(newArray);
 
-    localStorage.setItem('jsonData', JSON.stringify(json));
+    localStorage.setItem('jsonData', JSON.stringify(newArray));
   }
 
   getAll<T>(): T {
@@ -55,10 +56,10 @@ export abstract class CoreService {
     const stroData = localStorage.getItem('jsonData');
     const json = JSON.parse(String(stroData));
     const index = json.findIndex((element: any) => element.number == id);
-
     json[index] = payload;
 
-    localStorage.setItem('jsonData', json);
+    const jsonString = JSON.stringify(json);
+    localStorage.setItem('jsonData', jsonString);
   }
 
   protected getPath(_path: string, id?: number | string): string {
