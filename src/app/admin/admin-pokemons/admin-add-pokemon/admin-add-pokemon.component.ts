@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-admin-add-pokemon',
@@ -9,10 +9,10 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class AdminAddPokemonComponent {
   pokemonsForm: FormGroup = new FormGroup({
     number: new FormControl(null),
-    name: new FormControl(null),
+    name: new FormControl(null, Validators.required),
     types: new FormControl(null),
     type1: new FormControl(null),
-    type2: new FormControl(null),
+    type2: new FormControl(null, Validators.required),
     height: new FormControl(null),
     weight: new FormControl(null),
     malePct: new FormControl(null),
@@ -43,7 +43,19 @@ export class AdminAddPokemonComponent {
     dragonDmg: new FormControl(null),
     evolutions: new FormControl(null),
     legendary: new FormControl(null),
+    dynamicTypes: new FormArray([]),
   });
+
+  get dynamicTypes(): FormArray {
+    return this.pokemonsForm.get('dynamicTypes') as FormArray;
+  }
+
+  selectTypes(): void {
+    if (this.pokemonsForm.value.type1 != null) {
+      const type = this.pokemonsForm.value.type1;
+      this.dynamicTypes.push(new FormControl(type + 'Dmg'));
+    }
+  }
 
   constructor() {}
 

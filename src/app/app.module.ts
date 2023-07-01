@@ -8,6 +8,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CoreService } from './core/services/core/core.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { SharedModulesModule } from './shared/shared-modules/shared-modules.module';
+import { PokemoneImagePipe } from './shared/pipes/pokemone-image.pipe';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],

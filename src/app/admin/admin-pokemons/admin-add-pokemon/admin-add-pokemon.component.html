@@ -1,40 +1,63 @@
 <div class="col-md-12" style="overflow-y: auto">
-  <form formGroup="pokemonsForm">
+  <form [formGroup]="pokemonsForm">
     <div class="row">
       <div class="col-md-6 mr-3">
-        <input class="form-control" type="text" name="" id="" />
-        <input class="form-control" type="text" name="" id="" />
-        <input class="form-control" type="text" name="" id="" />
-        <input class="form-control" type="text" name="" id="" />
-        <input class="form-control" type="text" name="" id="" />
-        <input class="form-control" type="text" name="" id="" />
-        <input class="form-control" type="text" name="" id="" />
-        <input class="form-control" type="text" name="" id="" />
-        <input class="form-control" type="text" name="" id="" />
-        <input class="form-control" type="text" name="" id="" />
-        <input class="form-control" type="text" name="" id="" />
-        <input class="form-control" type="text" name="" id="" />
-        <input class="form-control" type="text" name="" id="" />
-        <input class="form-control" type="text" name="" id="" />
-        <input class="form-control" type="text" name="" id="" />
+        <input class="form-control" type="text" formControlName="name" placeholder="Name" />
+        <input class="form-control" type="number" formControlName="types" placeholder="Types" />
+
+        <select (change)="selectTypes()" formControlName="type1" class="form-control">
+          <option selected disabled value="">Type 1</option>
+          <option value="electric">electric</option>
+          <option value="poison">Poison</option>
+          <option value="bug">Bug</option>
+          <option value="fire">Fire</option>
+          <option value="grass">Grass</option>
+          <option value="water">Water</option>
+          <option value="psychic">psychic</option>
+          <option value="fighting">fighting</option>
+          <option value="normal">normal</option>
+        </select>
+
+        <select (change)="selectTypes()" formControlName="type2" class="form-control">
+          <option selected disabled value="">Type 2</option>
+          <option value="electric">electric</option>
+          <option value="poison">Poison</option>
+          <option value="bug">Bug</option>
+          <option value="fire">Fire</option>
+          <option value="grass">Grass</option>
+          <option value="water">Water</option>
+          <option value="psychic">psychic</option>
+          <option value="fighting">fighting</option>
+          <option value="normal">normal</option>
+          <option value="none">None</option>
+        </select>
+
+        <input class="form-control" type="text" formControlName="height" placeholder="height" />
+        <input class="form-control" type="text" formControlName="weight" placeholder="weight" />
+        <input class="form-control" type="text" formControlName="malePct" placeholder="malePct" />
+        <input class="form-control" type="text" formControlName="femalePct" placeholder="femalePct" />
+        <input class="form-control" type="text" formControlName="captRate" placeholder="captRate" />
+        <input class="form-control" type="text" formControlName="expPoints" placeholder="expPoints" />
       </div>
 
       <div class="col-md-6">
-        <input class="form-control" type="text" name="" id="" />
-        <input class="form-control" type="text" name="" id="" />
-        <input class="form-control" type="text" name="" id="" />
-        <input class="form-control" type="text" name="" id="" />
-        <input class="form-control" type="text" name="" id="" />
-        <input class="form-control" type="text" name="" id="" />
-        <input class="form-control" type="text" name="" id="" />
-        <input class="form-control" type="text" name="" id="" />
-        <input class="form-control" type="text" name="" id="" />
-        <input class="form-control" type="text" name="" id="" />
-        <input class="form-control" type="text" name="" id="" />
-        <input class="form-control" type="text" name="" id="" />
+        <input class="form-control" type="text" formControlName="special" placeholder="special" />
+        <input class="form-control" type="text" formControlName="speed" placeholder="speed" />
+        <input class="form-control" type="text" formControlName="expSpeed" placeholder="expSpeed" />
+        <input class="form-control" type="text" formControlName="baseTotal" placeholder="baseTotal" />
+        <input class="form-control" type="text" formControlName="hp" placeholder="hp" />
+        <input class="form-control" type="text" formControlName="attack" placeholder="attack" />
+        <input class="form-control" type="text" formControlName="defense" placeholder="defense" />
+        <select formControlName="legendary" class="form-control">
+          <option value="" selected disabled>legendary</option>
+          <option value="Oui">Oui</option>
+          <option value="Non">Non</option>
+        </select>
       </div>
     </div>
   </form>
 
-  <button (click)="onAddBtnClick()" class="btn btn-success form-control">Ajouter</button>
+  <button [disabled]="pokemonsForm.invalid" (click)="onAddBtnClick()" class="btn btn-success form-control">
+    Ajouter
+  </button>
 </div>
