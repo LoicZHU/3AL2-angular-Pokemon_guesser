@@ -1,0 +1,106 @@
+<div class="col-md-12">
+  <h1 style="text-align: center">{{ level }} Mode</h1>
+</div>
+
+<div style="height: 500px; overflow-x: auto">
+  <div class="grid-container">
+    <div *ngFor="let pokemon of selectedPokemons">
+      <div (click)="checkPokemon(pokemon)" [class.blur]="pokemon.blur" class="card">
+        <img src="{{ pokemon | pokemoneImage }}" alt="" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<h1 style="text-align: center">You have {{ shots }} trys left!</h1>
+
+<table class="table table-stripd">
+  <th>types</th>
+  <th>type1</th>
+  <th>type2</th>
+  <th>Height</th>
+  <th>weight</th>
+  <th>attack</th>
+  <th>defence</th>
+  <th>speed</th>
+
+  <tbody>
+    <tr>
+      <td>{{ pokemonToGuess.types }}</td>
+      <td>{{ pokemonToGuess.type1 }}</td>
+
+      <ng-container
+        *ngIf="
+          (level == 'easy' && shots <= 8) || (level == 'medium' && shots <= 6) || (level == 'hard' && shots <= 3);
+          else blocked
+        "
+      >
+        <td>{{ pokemonToGuess.type2 }}</td>
+      </ng-container>
+
+      <ng-template #blocked>
+        <td style="color: red">blocked</td>
+      </ng-template>
+
+      <ng-container
+        *ngIf="
+          (level == 'easy' && shots <= 7) || (level == 'medium' && shots <= 4) || (level == 'hard' && shots <= 3);
+          else blocked
+        "
+      >
+        <td>{{ pokemonToGuess.height }}</td>
+      </ng-container>
+
+      <ng-template #blocked>
+        <td style="color: red">blocked</td>
+      </ng-template>
+
+      <ng-container *ngIf="(level == 'easy' && shots <= 6) || (level == 'medium' && shots <= 4); else blocked">
+        <td>{{ pokemonToGuess.weight }}</td>
+      </ng-container>
+
+      <ng-template #blocked>
+        <td style="color: red">blocked</td>
+      </ng-template>
+
+      <ng-container
+        *ngIf="
+          (level == 'easy' && shots <= 5) || (level == 'medium' && shots <= 3) || (level == 'hard' && shots <= 2);
+          else blocked
+        "
+      >
+        <td>{{ pokemonToGuess.attack }}</td>
+      </ng-container>
+
+      <ng-template #blocked>
+        <td style="color: red">blocked</td>
+      </ng-template>
+
+      <ng-container
+        *ngIf="
+          (level == 'easy' && shots <= 4) || (level == 'medium' && shots <= 2) || (level == 'hard' && shots <= 2);
+          else blocked
+        "
+      >
+        <td>{{ pokemonToGuess.defense }}</td>
+      </ng-container>
+
+      <ng-template #blocked>
+        <td style="color: red">blocked</td>
+      </ng-template>
+
+      <ng-container
+        *ngIf="
+          (level == 'easy' && shots <= 3) || (level == 'medium' && shots <= 1) || (level == 'hard' && shots <= 1);
+          else blocked
+        "
+      >
+        <td style="color: red">{{ pokemonToGuess.speed }}</td>
+      </ng-container>
+
+      <ng-template #blocked>
+        <td>blocked</td>
+      </ng-template>
+    </tr>
+  </tbody>
+</table>
