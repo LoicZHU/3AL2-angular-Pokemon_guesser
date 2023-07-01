@@ -1,1 +1,15 @@
-<p>game works!</p>
+<div class="h-100 col-md-12">
+  <h1 style="text-align: center">Pokemon Guesser</h1>
+  <img
+    height="300px"
+    width="100%"
+    src="https://upload.wikimedia.org/wikipedia/commons/9/98/International_Pok%C3%A9mon_logo.svg"
+    alt=""
+  />
+</div>
+
+<div class="row col-md-12">
+  <button (click)="selectGameDiff('easy')" class="col-md-4 btn bttn">Easy</button>
+  <button (click)="selectGameDiff('med')" class="col-md-4 btn bttn">Meduim</button>
+  <button (click)="selectGameDiff('hard')" class="col-md-4 btn bttn">Hard</button>
+</div>

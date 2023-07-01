@@ -34,4 +34,5 @@ export interface Pokemon {
   dragonDmg: number;
   evolutions: number;
   legendary: number;
+  blur: boolean;
 }
