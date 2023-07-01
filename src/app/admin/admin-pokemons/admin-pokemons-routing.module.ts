@@ -5,7 +5,7 @@ import { AdminAddPokemonComponent } from './admin-add-pokemon/admin-add-pokemon.
 
 const routes: Routes = [
   { path: 'admin', component: AdminPokemonComponent },
-  { path: 'add', component: AdminAddPokemonComponent },
+  { path: 'add/:id?', component: AdminAddPokemonComponent },
 ];
 
 @NgModule({
