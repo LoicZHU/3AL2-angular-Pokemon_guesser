@@ -32,7 +32,7 @@
 
         <ng-container
           *ngIf="
-            (level == 'easy' && shots <= 8) || (level == 'medium' && shots <= 6) || (level == 'hard' && shots <= 3);
+            (level == 'easy' && shots <= 8) || (level == 'med' && shots <= 6) || (level == 'hard' && shots <= 3);
             else blocked
           "
         >
@@ -45,7 +45,7 @@
 
         <ng-container
           *ngIf="
-            (level == 'easy' && shots <= 7) || (level == 'medium' && shots <= 4) || (level == 'hard' && shots <= 3);
+            (level == 'easy' && shots <= 7) || (level == 'med' && shots <= 4) || (level == 'hard' && shots <= 3);
             else blocked
           "
         >
@@ -56,7 +56,7 @@
           <td style="color: red">blocked</td>
         </ng-template>
 
-        <ng-container *ngIf="(level == 'easy' && shots <= 6) || (level == 'medium' && shots <= 4); else blocked">
+        <ng-container *ngIf="(level == 'easy' && shots <= 6) || (level == 'med' && shots <= 4); else blocked">
           <td>{{ pokemonToGuess.weight }}</td>
         </ng-container>
 
@@ -66,7 +66,7 @@
 
         <ng-container
           *ngIf="
-            (level == 'easy' && shots <= 5) || (level == 'medium' && shots <= 3) || (level == 'hard' && shots <= 2);
+            (level == 'easy' && shots <= 5) || (level == 'med' && shots <= 3) || (level == 'hard' && shots <= 2);
             else blocked
           "
         >
@@ -79,7 +79,7 @@
 
         <ng-container
           *ngIf="
-            (level == 'easy' && shots <= 4) || (level == 'medium' && shots <= 2) || (level == 'hard' && shots <= 2);
+            (level == 'easy' && shots <= 4) || (level == 'med' && shots <= 2) || (level == 'hard' && shots <= 2);
             else blocked
           "
         >
@@ -92,7 +92,7 @@
 
         <ng-container
           *ngIf="
-            (level == 'easy' && shots <= 3) || (level == 'medium' && shots <= 1) || (level == 'hard' && shots <= 1);
+            (level == 'easy' && shots <= 3) || (level == 'med' && shots <= 1) || (level == 'hard' && shots <= 1);
             else blocked
           "
         >
