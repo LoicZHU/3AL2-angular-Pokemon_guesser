@@ -1,27 +1,48 @@
-# PokemonGuesser
+# Choix technique
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.3.
+## Technologies
 
-## Development server
+- Angular
+- Bootstrap
+- LocalStorage : sauvegardes et manipulations des données
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+# Règles du jeu Pokémon
 
-## Code scaffolding
+- Le jeu dispose de trois niveaux : facile, moyen et difficile.
+- Parmi une liste de choix, le but du jeu est de deviner un Pokémon.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Niveau Facile
 
-## Build
+- Nombre de tours : 10
+- Pokémon sélectionnables : 30
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+<p>Dans ce niveau, les données des Pokémon s'affichent tour après tour.</p>
 
-## Running unit tests
+## Niveau Moyen
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Nombre de tours : 7
+- Pokémon sélectionnables : 80
 
-## Running end-to-end tests
+<p>Dans ce niveau, les données des Pokémon sont toujours bloquées.</p>
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Niveau Difficile
 
-## Further help
+- Nombre de tours : 4
+- Pokémon sélectionnables : 150
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+<p>Dans ce niveau, quelques données s'affichent à chaque tour.</p>
+
+# Fonctionnalités
+
+- Information de Pokémon :
+  - liste
+  - détails d'un Pokémon
+- Administration :
+  - Ajout
+  - Modification (au clic sur le Pokémon dans la liste)
+  - Duplication
+  - Suppression
+- Jeu avec niveaux :
+  - facile
+  - moyen
+  - difficile
