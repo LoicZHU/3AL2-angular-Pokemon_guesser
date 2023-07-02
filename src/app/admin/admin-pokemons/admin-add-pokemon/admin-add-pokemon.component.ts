@@ -58,11 +58,13 @@ export class AdminAddPokemonComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.route.params.subscribe((res) => {
-      this.isUpdate = true;
       this.pokemonId = res['id?'];
       if (this.pokemonId) {
+        this.isUpdate = true;
         const pokemon: Pokemon | undefined = this.core.getOneByField(this.pokemonId);
         this.pokemonsForm.setValue(pokemon as Pokemon);
+      } else {
+        this.isUpdate = false;
       }
     });
   }
